@@ -89,4 +89,4 @@ export const { increment } = counterSlice.actions;
 
 export const selectItems = (state) => state.cart.items;
 
-export default counterSlice.reducer; 
+export default counterSlice.reducer;
