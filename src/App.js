@@ -22,7 +22,7 @@ import Logout from './features/auth/components/Logout';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ProtectedAdmin from './features/auth/components/ProtectedAdmin';
 import AdminHome from './pages/AdminHome';
-import Admins from './pages/AdminProductDetailPage';
+import AdminProductDetailPage from './pages/AdminProductDetailPage';
 import AdminProductFormPage from './pages/AdminProductFormPage';
 import AdminOrdersPage from './pages/AdminOrdersPage';
 import { positions, Provider } from 'react-alert';
@@ -86,7 +86,7 @@ const router = createBrowserRouter([
     path: '/admin/product-detail/:id',
     element: (
       <ProtectedAdmin>
-        <Admins></Admins>
+        <AdminProductDetailPage></AdminProductDetailPage>
       </ProtectedAdmin>
     ),
   },
@@ -116,15 +116,27 @@ const router = createBrowserRouter([
   },
   {
     path: '/order-success/:id',
-    element: <OrderSuccessPage></OrderSuccessPage>,
+    element: (
+      <Protected>
+        <OrderSuccessPage></OrderSuccessPage>{' '}
+      </Protected>
+    ),
   },
   {
     path: '/orders',
-    element: <UserOrdersPage></UserOrdersPage>,
+    element: (
+      <Protected>
+        <UserOrdersPage></UserOrdersPage>{' '}
+      </Protected>
+    ),
   },
   {
     path: '/profile',
-    element: <UserProfilePage></UserProfilePage>,
+    element: (
+      <Protected>
+        <UserProfilePage></UserProfilePage>{' '}
+      </Protected>
+    ),
   },
   {
     path: '/logout',

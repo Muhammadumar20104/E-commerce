@@ -41,7 +41,7 @@ function classNames(...classes) {
 
 // TODO : Loading UI
 
-export default function ProductDetail() {
+export default function ProductDetails() {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
   const user = useSelector(selectLoggedInUser);
@@ -63,7 +63,7 @@ export default function ProductDetail() {
       };
       dispatch(addToCartAsync(newItem));
       // TODO: it will be based on server response of backend
-      alert.error('Item added to Cart');
+      alert.success('Item added to Cart');
     } else {
       alert.error('Item Already added');
     }
