@@ -7,17 +7,14 @@ import {
 
 const initialState = {
   status: 'idle',
-  userInfo: {
-    orders: [], // Initialize orders as an empty array
-  },
-  // this info will be used in case of detailed user info, while auth will
+  userInfo: null, // this info will be used in case of detailed user info, while auth will
   // only be used for loggedInUser id etc checks
 };
 
 export const fetchLoggedInUserOrderAsync = createAsyncThunk(
   'user/fetchLoggedInUserOrders',
-  async (id) => {
-    const response = await fetchLoggedInUserOrders(id);
+  async () => {
+    const response = await fetchLoggedInUserOrders();
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
@@ -25,8 +22,8 @@ export const fetchLoggedInUserOrderAsync = createAsyncThunk(
 
 export const fetchLoggedInUserAsync = createAsyncThunk(
   'user/fetchLoggedInUser',
-  async (id) => {
-    const response = await fetchLoggedInUser(id);
+  async () => {
+    const response = await fetchLoggedInUser();
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
@@ -46,7 +43,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-
+   
   },
   extraReducers: (builder) => {
     builder
@@ -79,8 +76,8 @@ export const userSlice = createSlice({
 
 // TODO: change orders and address to be independent of user;
 export const selectUserOrders = (state) => state.user.userInfo.orders;
-
 export const selectUserInfo = (state) => state.user.userInfo;
+export const selectUserInfoStatus = (state) => state.user.status;
 
 // export const { increment } = userSlice.actions;
 
